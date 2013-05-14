@@ -142,10 +142,13 @@ public class EarthquakeListFragment extends ListFragment {
 	}
 	
 	private void addNewQuake(Quake _quake) {
-		// Add the new quake to our list of earthquakes
-		earthquakes.add(_quake);
-		
-		// Notify the array adapter of a change
-		aa.notifyDataSetChanged();
+		EarthquakeActivity earthquakeActivity = (EarthquakeActivity) getActivity();
+		if (_quake.getMagnitude() > earthquakeActivity.minimumMagnitude) {
+			// Add the new quake to our list of earthquakes
+			earthquakes.add(_quake);
+			
+			// Notify the array adapter of a change
+			aa.notifyDataSetChanged();
+		}
 	}
 }
